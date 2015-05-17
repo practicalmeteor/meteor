@@ -54,6 +54,13 @@
       }
     };
 
+    if (window.wkwebview) {
+      location += 'index.html';
+      log('wkweview detected, loading from ' + location);
+      window.location = location;
+      return;
+    }
+
     httpd.startServer({
       'www_root' : location,
       'cordovajs_root': cordovaRoot
@@ -77,8 +84,13 @@
     } else {
       log('No new versions saved to disk.');
     }
-    var location = cordova.file.applicationDirectory + 'www/application/';
-    location = uriToPath(location);
+    var location;
+    if (window.wkwebview) {
+      location = 'application/'
+    } else {
+      location = cordova.file.applicationDirectory + 'www/application/';
+      location = uriToPath(location);
+    }
 
     loadFromLocation(location);
   };

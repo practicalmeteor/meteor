@@ -58,6 +58,13 @@ var restartServer = function (location) {
     return;
   }
 
+  if (window.wkwebview) {
+    location += '/index.html';
+    log('wkweview detected, loading from ' + location);
+    window.location = location;
+    return;
+  }
+
   var startServer = function (cordovajsRoot) {
     httpd.startServer({
       'www_root' : location,
