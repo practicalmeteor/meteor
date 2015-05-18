@@ -5,10 +5,12 @@
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
   <meta name="msapplication-tap-highlight" content="no">
 
-// No need to use bundledJsCssPrefix in cordova, files will always be loaded from the local file system and never from a cdn.
-// The . before the url will force the browser to load the files using paths relative to index.html,
-// so that people can use the much more performant WkWebView in ios, which doesn't support the url rewrites implemented
-// by meteor's CordovaUpdate plugin.
+<!--
+No need to use bundledJsCssPrefix in cordova, files will always be loaded from the local file system and never from a cdn.
+The . before the url will force the browser to load the files using paths relative to index.html,
+so that people can use the much more performant WkWebView in ios, which doesn't support the url rewrites implemented
+by meteor's CordovaUpdate plugin.
+-->
 {{#each css}}  <link rel="stylesheet" type="text/css" class="__meteor-css__" href=".{{url}}">{{/each}}
 
   <script type='text/javascript'>
@@ -27,7 +29,7 @@
 
   <script type="text/javascript" src="/cordova.js"></script>
 
-// See comment above regarding each css, which applies here, too.
+<!--See comment above regarding each css, which applies here, too.-->
 {{#each js}}  <script type="text/javascript" src=".{{url}}"></script>
 {{/each}}
 {{#each additionalStaticJs}}
